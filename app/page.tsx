@@ -96,7 +96,7 @@ export default function Home(){
  </section></main>;
 
  if(!session)return <main className="center"><section className="loginCard"><div className="brand"><b>V</b> VaktVarsel</div><p className="eyebrow">ADMIN PILOT</p><h1>Logg inn</h1><p>Første gang? Opprett pilotbrukeren din her.</p>
-  <form onSubmit={login}><label>E-post<input name="email" type="email" required/></label><label>Passord<input name="password" type="password" minLength={8} required/></label><button className="primary">Logg inn</button><button type="button" onClick={e=>signup({...e,currentTarget:(e.currentTarget.parentElement as HTMLFormElement)})}>Opprett bruker</button></form>{msg&&<div className="message">{msg}</div>}
+  <form onSubmit={login}><label>E-post<input name="email" type="email" required/></label><label>Passord<input name="password" type="password" minLength={8} required/></label><button className="primary" type="submit">Logg inn</button><button type="submit" formAction={(e:any)=>{e.preventDefault();signup(e)}}>Opprett bruker</button></form>{msg&&<div className="message">{msg}</div>}
  </section></main>;
 
  const counts=[["Vakter",duties.length],["Bekreftet",duties.filter(d=>d.status==="Bekreftet").length],["Venter",duties.filter(d=>d.status==="SMS sendt").length],["Trenger bytte",duties.filter(d=>d.status==="Trenger bytte").length]];
